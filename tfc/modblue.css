@@ -1,0 +1,118 @@
+/*
+modblue theme
+*/
+
+.modblue .navbar,
+.modblue .navbar.navbar-transparent {
+background-color:#5495B4;
+border-bottom:8px solid white;
+border-top:8px solid white;
+}
+
+.modblue .navbar .navbar-nav > li > a,
+.modblue .navbar.navbar-transparent li a {
+color:#fff;
+}
+
+.modblue section.tfc-cta .row > div.left {
+color:#fff;
+border-right:none;
+background-color:#0E405F;
+}
+
+.modblue section.tfc-cta {
+border-top: none;
+border-bottom: none;
+}
+
+.modblue section.tfc-cta .row > div.right,
+.modblue .quick-donate {
+background-color:#5495B4;
+color:#fff;
+}
+
+.modblue section.tfc-cta .quick-donate {
+background-color:transparent;
+}
+
+/*NGP embedded form fixes*/
+.modblue .widget .ngp-form {
+background-color: #0E405F;
+}
+
+.modblue .widget .ngp-form .btn-at-primary{
+background-color:white !important;
+color: #0E405F !important;
+}
+/*end NGP embedded form fixes*/
+.modblue section.tfc-cta .btn { 
+background-color:#A62A22;
+font-weight:700;
+}
+
+
+.modblue .navbar .menu-item.highlight {
+background-color:#A62A22;
+}
+
+.modblue .navbar .navbar-nav .menu-item.highlight a:hover,
+.modblue .navbar .menu-item.highlight2 a:hover,
+body.modblue:not(.home) .navbar-default .navbar-nav > .highlight2.active:not(.btn) > a:hover,
+.modblue .navbar .menu-item.highlight2 a:hover,
+body.modblue:not(.home) .navbar-default .navbar-nav > .highlight:not(.btn) > a:hover,
+.modblue .navbar .menu-item.highlight a:hover,
+.modblue .navbar-default .navbar-nav> .highlight.active>a:hover,
+body.modblue:not(.home) .navbar-default .navbar-nav > .highlight.active:not(.btn) > a:hover {
+color:#666;
+}
+
+
+.modblue .navbar .menu-item.highlight a,
+body.modblue:not(.home) .navbar-default .navbar-nav > .highlight.active:not(.btn) > a {
+color:#fff;
+}
+
+.modblue .navbar .menu-item.active a{
+opacity:.7;
+}
+
+.modblue .navbar .menu-item.highlight2 a,
+.modblue .navbar .menu-item.highlight2.active a,
+body.modblue:not(.home) .navbar-default .navbar-nav > .highlight2.active:not(.btn) > a {
+color:#5495B4;
+}
+
+.modblue .navbar .menu-item.highlight2 {
+background-color:#fff;
+color:#5495B4;
+}
+
+.modblue .hestia-features .hestia-features-content .row .feature-box {
+background-color:#64B3D9;
+border-right:none;
+border-bottom:none;
+}
+
+.modblue .hestia-info .info-title {
+color:#fff;
+margin:0 0 1em;
+}
+.modblue .hestia-features .hestia-features-content .row .feature-box:first-child {
+background-color:#5495B4;
+}
+.modblue .hestia-features .container,
+.modblue .hestia-features .hestia-features-content .row .feature-box:last-child {
+background-color:#0E405F;
+}
+.modblue .pt-cv-readmore {
+color:#0E405F!important;
+}
+.modblue .pt-cv-wrapper .pagination>.active>a,
+.modblue .pt-cv-wrapper .pagination>.active>a:focus,
+.modblue .pt-cv-wrapper .pagination>.active>a:hover,
+.modblue .pt-cv-wrapper .pagination>.active>span, 
+.modblue .pt-cv-wrapper .pagination>.active>span:focus, 
+.modblue .pt-cv-wrapper .pagination>.active>span:hover {
+background-color: #0E405F;
+border-color: #0E405F;
+}

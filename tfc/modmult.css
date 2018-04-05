@@ -1,0 +1,207 @@
+/*
+modmult theme
+*/
+
+.modmult .navbar,
+.modmult .navbar.navbar-transparent {
+background-color:#4089A1;
+}
+.modmult .navbar .navbar-nav > li > a,
+.modmult .navbar.navbar-transparent li a {
+color:#F8FC54;
+}
+
+.modmult section.tfc-cta .row > div.left {
+color:#fff;
+border-right:none;
+background-color:#183E58;
+}
+
+.modmult section.tfc-cta {
+border-top: none;
+border-bottom: none;
+}
+
+.modmult section.tfc-cta .row > div.right {
+color:#183E58;
+background-color:#fff;
+}
+.modmult .quick-donate {
+background-color:#fff;
+color:#183E58;
+}
+.modmult section.tfc-cta .quick-donate {
+background-color:transparent;
+}
+
+.modmult section.tfc-cta div.left .quick-donate,
+.modmult div.left .quick-donate .row div a:after, 
+.modmult section.tfc-cta div.left .quick-donate .row div a {
+    color:white;
+}
+
+.modmult .quick-donate .row div a {
+color:#183E58;
+background-color:transparent;
+text-align:left;
+}
+.modmult .quick-donate .row div a:after {
+color:#183E58;
+background-color:transparent;
+content: "\f178"; 
+margin-left:3px;
+font-family: FontAwesome;
+}
+.modmult .quick-donate .row div a:after:hover {
+text-decoration:none;
+}
+
+.modmult .widget .ngp-form {
+background-color: #183E58;
+}
+
+.modmult section.tfc-cta .row  div.left .btn,
+.modmult .widget .ngp-form .btn-at-primary{
+background-color:#F8FC54 !important;
+color: #183E58 !important;
+}
+
+.modmult section.tfc-cta .btn { 
+background-color:#183E58;
+font-weight:700;
+}
+.modmult .navbar .menu-item.highlight {
+background-color:#0E405F;
+}
+
+.modmult.navbar .dropdown-menu li:hover > a,
+.modmult.navbar .dropdown-menu li:focus > a,
+.modmult.navbar .dropdown-menu li:active > a,
+.modmult.navbar.navbar-not-transparent .nav > li.on-section:not(.btn):hover > a,
+.modmult.navbar.navbar-not-transparent .nav > li.on-section:not(.btn):focus > a,
+.modmult.navbar.navbar-not-transparent .nav > li.on-section:not(.btn):active > a,
+.modmultbody:not(.home) .navbar-default .navbar-nav > .active:not(.btn) > a:hover,
+.modmultbody:not(.home) .navbar-default .navbar-nav > .active:not(.btn) > a:focus,
+.modmult.hestia-blogs article:nth-child(6n+1) .category a,
+.modmulta:hover,
+.modmult.card-blog a.moretag:hover,
+.modmult.card-blog a.more-link:hover,
+.modmult.widget a:hover {
+color: #F8FC54;
+}
+
+.modmult button,
+.modmult button:hover,
+.modmult input[type="button"],
+.modmult input[type="button"]:hover,
+.modmult input[type="submit"],
+.modmult input[type="submit"]:hover,
+.modmult input#searchsubmit,
+.modmult .pagination span.current,
+.modmult .pagination span.current:focus,
+.modmult .pagination span.current:hover,
+.modmult .btn.btn-primary,
+.modmult .btn.btn-primary:link,
+.modmult .btn.btn-primary:hover,
+.modmult .btn.btn-primary:focus,
+.modmult .btn.btn-primary:active,
+.modmult .btn.btn-primary.active,
+.modmult .btn.btn-primary.active:focus,
+.modmult .btn.btn-primary.active:hover,
+.modmult .btn.btn-primary:active:hover,
+.modmult .btn.btn-primary:active:focus,
+.modmult .btn.btn-primary:active:hover,
+.modmult .hestia-sidebar-open.btn.btn-rose,
+.modmult .hestia-sidebar-close.btn.btn-rose,
+.modmult .hestia-sidebar-open.btn.btn-rose:hover,
+.modmult .hestia-sidebar-close.btn.btn-rose:hover,
+.modmult .hestia-sidebar-open.btn.btn-rose:focus,
+.modmult .hestia-sidebar-close.btn.btn-rose:focus,
+.modmult .label.label-primary,
+.modmult .hestia-work .portfolio-item:nth-child(6n+1) .label,
+.modmult .nav-cart .nav-cart-content .widget .buttons .button,
+.modmult .pushbutton-wide,
+.modmult .contact-form .pushbutton-wide{
+background-color: #183E58;  
+color:#fff; 
+}
+
+.modmult .navbar .navbar-nav .menu-item.highlight a:hover,
+body.modmult:not(.home) .navbar-default .navbar-nav > .highlight:not(.btn) > a:hover,
+.modmult .navbar .menu-item.highlight a:hover,
+.modmult .navbar-default .navbar-nav> .highlight.active>a:hover,
+body.modmult:not(.home) .navbar-default .navbar-nav > .highlight.active:not(.btn) > a:hover {
+color:#666;
+}
+
+.modmult .navbar .menu-item.highlight a,
+.modmult .navbar .menu-item.highlight.active a,
+body.modmult:not(.home) .navbar-default .navbar-nav > .highlight.active:not(.btn) > a {
+color:#fff;
+}
+
+
+.modmult .navbar .menu-item.active a{
+color:#F8FC54;
+opacity:.6;
+}
+
+.modmult .navbar .menu-item.highlight a,
+.modmult .navbar .menu-item.highlight a:hover,.modmult .navbar .menu-item.highlight.active a,
+body.modmult:not(.home) .navbar-default .navbar-nav > .highlight.active:not(.btn) > a:hover,
+body.modmult:not(.home) .navbar-default .navbar-nav > .highlight.active:not(.btn) > a {
+color:#F8FC54;
+}
+
+.modmult .navbar .menu-item.highlight2 {
+background-color:#fff;
+color:#4089A1;
+}
+
+.modmult .navbar .navbar-nav > li.highlight2 > a,
+.modmult .navbar.navbar-transparent li.highlight2 a {
+color:#4089A1;   
+}
+
+.modmult .navbar .menu-item.highlight2 a:hover,
+body.modmult:not(.home) .navbar-default .navbar-nav > .highlight2.active:not(.btn) > a:hover{
+color:#F8FC54;
+}
+
+
+.modmult .hestia-features .hestia-features-content .row .feature-box {
+background-color:#4A97AF;
+border-right:none;
+border-bottom:none;
+}
+
+.modmult .hestia-info .info-title {
+color:#fff;
+margin:0 0 1em;
+}
+.modmult .hestia-features .hestia-features-content .row .feature-box:first-child {
+background-color:#2C697D;
+}
+.modmult .hestia-features .container,
+.modmult .hestia-features .hestia-features-content .row .feature-box:last-child {
+background-color:#0E405F;
+}
+.modmult .pt-cv-readmore {
+color:#0E405F!important;
+}
+.modmult .pt-cv-wrapper .pagination>.active>a,
+.modmult .pt-cv-wrapper .pagination>.active>a:focus,
+.modmult .pt-cv-wrapper .pagination>.active>a:hover,
+.modmult .pt-cv-wrapper .pagination>.active>span, 
+.modmult .pt-cv-wrapper .pagination>.active>span:focus, 
+.modmult .pt-cv-wrapper .pagination>.active>span:hover {
+background-color: #0E405F;
+border-color: #0E405F;
+}
+
+.modmult .hestia-big-title-content .btn.btn-primary,
+.modmult .hestia-big-title-content .btn.btn-primary:hover,
+.modmult .hestia-big-title-content .btn.btn-primary:hover:focus {
+background-color: #F8FC54;
+color: #183E58;
+}
