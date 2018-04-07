@@ -4,6 +4,7 @@ include_once( 'inc/customizer.php' );
 include_once( 'inc/tfc-cta-section.php' );
 include_once( 'inc/feature-cta-section.php' );
 include_once( 'inc/features.php' );
+include_once( 'inc/footer.php' );
 include_once( 'inc/starter.php' );
 
 function tfc_widget_init(){
@@ -24,30 +25,18 @@ function tfc_widget_init(){
     'footer-top-widgets'     => esc_html__( 'Footer Top Bar', 'hestia' ),
   );
 
-  /**
-   * Array of sidebars registered in the footer area.
-   * The hestia_footer_widget_areas_array filter is used in the PRO version to add the extra forth sidebar.
-   */
-  $footer_sidebars_array = apply_filters(
-    'hestia_footer_widget_areas_array', array(
-      'footer-one-widgets'   => esc_html__( 'Footer One', 'hestia' ),
-      'footer-two-widgets'   => esc_html__( 'Footer Two', 'hestia' ),
-      'footer-three-widgets' => esc_html__( 'Footer Three', 'hestia' ),
-      'footer-four-widgets' => esc_html__( 'Footer Four', 'hestia' ),
-
-    )
-  );
-
-  /**
-   * Number of footer sidebars that need to be registered.
-   * This option is available only in the PRO version. In Hestia, the value is always 3.
-   */
-  $hestia_nr_footer_widgets = 4;
-
 
 }
 add_action( 'widgets_init', 'tfc_widget_init' );
 
+function register_my_menus() {
+  register_nav_menus(
+    array(
+      'foot-menu' => __( 'Footer Block Menu' ),
+    )
+  );
+}
+add_action( 'init', 'register_my_menus' );
 
 function mychildtheme_enqueue_styles() {
     $parent_style = 'parent-style';
@@ -89,11 +78,6 @@ register_sidebar(array(
 'name' => 'Footer Top Bar',
 'id'   => 'footer-top-widgets',
 'description'   => 'Top Bar in Footer Area',
-));
-register_sidebar(array(
-'name' => 'Footer Four',
-'id'   => 'footer-four-widgets',
-'description'   => 'Widgets in Footer Area',
 ));
 
 }
@@ -160,8 +144,9 @@ add_action('hestia_before_header_hook', 'tfc_gtm_body');
 
 
 function tfc_body_classes( $classes ) {
-$tfc_color_setting  = get_theme_mod( 'tfc_color','tfc' );
-    $classes[] = $tfc_color_setting;
+  $tfc_color_setting  = get_theme_mod( 'tfc_color','podium');
+  $classes[] = $tfc_color_setting;
+  write_log('classes ' . print_r($classes,true) . ' theme is ' .  $tfc_color_setting); 
   return $classes;
 }
 
@@ -224,9 +209,9 @@ if (file_exists(WP_PLUGIN_DIR . '/hello.php')){
       'version' => '1.0+',
     ),
     array(
-      'name'    => 'Pixel Your Site',
-      'slug'    => 'pixelyoursite',
-      'version' => '5.0+',
+      'name'    => 'Pixel Caffeine',
+      'slug'    => 'pixel-caffeine',
+      'version' => '2.0+',
     ),
   );
 

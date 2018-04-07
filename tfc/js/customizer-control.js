@@ -5,7 +5,7 @@
 
 customize('hestia_about_hide', function(value) {
       value.bind(function(newval) {
-      	console.log('hestia_about_hide',newval)
+        console.log('hestia_about_hide',newval)
       })
   });
 
@@ -36,7 +36,7 @@ customize('hestia_about_hide', function(value) {
         $('body').addClass(newval);
 
 
-		function checkHeight(selector){
+    function checkHeight(selector){
             var window = $(document).width();
             if (window > 768) {
                 //console.log('checking height',window);
@@ -50,8 +50,8 @@ customize('hestia_about_hide', function(value) {
             }
         };  
     
-    	checkHeight('.tfc-cta div.col-equal');
-    	checkHeight('.hestia-features-content .row .feature-box');
+      checkHeight('.tfc-cta div.col-equal');
+      checkHeight('.hestia-features-content .row .feature-box');
 
 
       });

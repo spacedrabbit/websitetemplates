@@ -400,7 +400,7 @@ background-position:25% center;
 }
 
 .header-filter {
-background-position:10% center;
+background-position:top center;
 }
 
 .at-form {
@@ -492,7 +492,8 @@ body,
 .fts-events-list-wrap .fts-fb-location-title {
 font-weight:400;
 }
-.navbar-default .navbar-brand,
+
+
 .navbar-default .navbar-nav> li.highlight >a,
 .navbar .menu-item.highlight2 a,
 .navbar .menu-item.highlight2.active a

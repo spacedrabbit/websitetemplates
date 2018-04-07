@@ -1,15 +1,15 @@
 <?php
-//manipulate files
+//create menu
+add_action( 'after_switch_theme', 'tfc_make_top_menu',5 );
+add_action( 'after_switch_theme', 'tfc_make_foot_menu',6 );
+//manipulate blog/home pages
 add_action( 'after_switch_theme', 'tfc_make_post',10 );
 add_action( 'after_switch_theme', 'tfc_fix_blog',20 );
 add_action( 'after_switch_theme', 'tfc_make_homepage',30 );
-//pages
-add_action( 'after_switch_theme', 'tfc_make_about_page',40 );
-add_action( 'after_switch_theme', 'tfc_make_get_involved_page',50 );
-add_action( 'after_switch_theme', 'tfc_make_priorities_page',60 );
-add_action( 'after_switch_theme', 'tfc_make_events_page',70 );
-//menus
-add_action( 'after_switch_theme', 'tfc_make_menus',100 );
+//make pages
+add_action( 'after_switch_theme', 'tfc_make_sample_pages',40 );
+add_action( 'after_switch_theme', 'tfc_make_donate_button',100 );
+add_action( 'after_switch_theme', 'set_widgets',150 );
 
 function tfc_make_post() {
     $post = get_page_by_path('hello-world',OBJECT,'post');
@@ -25,119 +25,72 @@ function tfc_make_post() {
     }
 }
 
-function tfc_make_about_page(){
-
-    $new_page_title     = __('Meet Jill'); // Page's title
-    $new_page_content   = 'She is just the best!';                           // Content goes here
-    $new_page_template  = 'template-fullwidth.php';       // The template to use for the page
+function tfc_make_new_page($slug,$new_page_title,$new_page_content,$image,$menu,$foot_menu,$new_page_template){
     $page_check = get_page_by_title($new_page_title);   // Check if the page already exists
-    // Store the above data in an array
     $new_page = array(
             'post_type'     => 'page', 
             'post_title'    => $new_page_title,
             'post_content'  => $new_page_content,
             'post_status'   => 'publish',
             'post_author'   => 1,
-            'post_slug'     => 'about'
+            'post_slug'     => $slug
     );
     // If the page doesn't already exist, create it
     if(!isset($page_check->ID)){
-        $image = 'flag.jpg';
+        //make page
         $new_page_id = wp_insert_post($new_page);
         write_log($new_page_title . ' page is created ' . $new_page_id);
-        tfc_add_image($new_page_id, $image);
-        write_log($new_page_title . ' created'); 
-        if(!empty($new_page_template)){
-            update_post_meta($new_page_id, '_wp_page_template', $new_page_template);
+        //add featured image
+        if(!empty($image)){
+            tfc_add_image($new_page_id, $image);
+        }else{
+            write_log($new_page_title . ' no image'); 
         }
-        }else{
-            write_log($new_page_title . ' exists, skipping'); 
+    }else{
+        $new_page_id = $page_check->ID;
+        write_log($new_page_title . ' exists, skipping'); 
+    }
+    //make menu item
+    if($menu == 'TRUE'){
+        tfc_make_menu_item($new_page_id, $new_page_title);
+    }else{
+        write_log($new_page_title . ' no menu'); 
+    } 
+    //make menu item
+    if($foot_menu == 'TRUE'){
+        tfc_make_foot_menu_item($new_page_id, $new_page_title);
+    }else{
+        write_log($new_page_title . ' no foot menu'); 
+    }   
+    //assign page template
+    if(!empty($new_page_template)){
+        update_post_meta($new_page_id, '_wp_page_template', $new_page_template);
     }
 }
 
-function tfc_make_get_involved_page(){
+function tfc_make_sample_pages(){
+    $file = get_stylesheet_directory() . '/assets/data/pages.csv';
+    $pages = array_map('str_getcsv', file($file));
+    array_walk($pages, function(&$a) use ($pages) {
+      $a = array_combine($pages[0], $a);
+    });
+    array_shift($pages); # remove column header
 
-    $new_page_title     = __('Get Involved'); // Page's title
-    $new_page_content   = 'Add a form or other content. [fts_facebook type=events id=techforcampaigns posts=6]';                           // Content goes here
-    $new_page_template  = 'template-fullwidth.php';       // The template to use for the page
-    $page_check = get_page_by_title($new_page_title);   // Check if the page already exists
-    // Store the above data in an array
-    $new_page = array(
-            'post_type'     => 'page', 
-            'post_title'    => $new_page_title,
-            'post_status'   => 'publish',
-            'post_author'   => 1,
-            'post_slug'     => 'get-involved'
-    );
-    // If the page doesn't already exist, create it
-    if(!isset($page_check->ID)){
-       $image = 'flag2.jpg';
-        $new_page_id = wp_insert_post($new_page);
-        write_log($new_page_title . ' page is created ' . $new_page_id);
-        tfc_add_image($new_page_id, $image);
-        if(!empty($new_page_template)){
-            update_post_meta($new_page_id, '_wp_page_template', $new_page_template);
-        }
-        }else{
-            write_log($new_page_title . ' exists, skipping'); 
+    foreach ($pages as &$value) {
+        $slug = $value['slug'];
+        $new_page_title=$value['new_page_title'];
+        $new_page_content=$value['new_page_content'];
+        $image=$value['image'];
+        $menu=$value['menu'];
+        $foot_menu=$value['foot_menu'];
+        $new_page_template=$value['new_page_template'];
+
+        tfc_make_new_page($slug,$new_page_title,$new_page_content,$image,$menu,$foot_menu,$new_page_template);
     }
 }
 
-function tfc_make_events_page(){
 
-    $new_page_title     = __('Events'); // Page's title
-    $new_page_content   = 'Make a feed from your facebook events page, using the Feed Them Social plugin. 
-    [fts_facebook type=events id=techforcampaigns posts=6]';                           // Content goes here
-    $new_page_template  = 'template-fullwidth.php';       // The template to use for the page
-    $page_check = get_page_by_title($new_page_title);   // Check if the page already exists
-    // Store the above data in an array
-    $new_page = array(
-            'post_type'     => 'page', 
-            'post_title'    => $new_page_title,
-            'post_status'   => 'publish',
-            'post_author'   => 1,
-            'post_slug'     => 'events'
-    );
-    // If the page doesn't already exist, create it
-    if(!isset($page_check->ID)){
-       $image = 'flag.jpg';
-        $new_page_id = wp_insert_post($new_page);
-        write_log($new_page_title . ' page is created ' . $new_page_id);
-        tfc_add_image($new_page_id, $image);
-        if(!empty($new_page_template)){
-            update_post_meta($new_page_id, '_wp_page_template', $new_page_template);
-        }
-        }else{
-            write_log($new_page_title . ' exists, skipping'); 
-    }
-}
-
-function tfc_make_priorities_page(){
-
-    $new_page_title     = __('Priorities'); // Page's title
-    $new_page_content   = 'Talk about the issues here';                           // Content goes here
-    $page_check = get_page_by_title($new_page_title);   // Check if the page already exists
-    // Store the above data in an array
-    $new_page = array(
-            'post_type'     => 'page', 
-            'post_title'    => $new_page_title,
-            'post_status'   => 'publish',
-            'post_author'   => 1,
-            'post_slug'     => 'priorities'
-    );
-    // If the page doesn't already exist, create it
-    if(!isset($page_check->ID)){
-        $image = 'vote.jpg';
-        $new_page_id = wp_insert_post($new_page);
-        write_log($new_page_title . ' page is created ' . $new_page_id);
-        tfc_add_image($new_page_id, $image);
-        write_log($new_page_title . ' created'); 
-        }else{
-            write_log($new_page_title . ' exists, skipping'); 
-    }
-}
-
-function tfc_make_menus() {
+function tfc_make_top_menu() {
 // Check if the menu exists
 $menu_name = 'TFC Top Menu';
 $menu_exists = wp_get_nav_menu_object( $menu_name );
@@ -146,107 +99,59 @@ $menu_exists = wp_get_nav_menu_object( $menu_name );
 if( !$menu_exists){
     write_log($menu_name . ' menu does not exist');
     $menu_id = wp_create_nav_menu($menu_name);
+        write_log($menu_id . ' is menu id (created)');
     // Set up default menu items - HOME
     wp_update_nav_menu_item($menu_id, 0, array(
         'menu-item-title' =>  __('Home'),
         'menu-item-classes' => 'home',
         'menu-item-url' => home_url( '/' ), 
         'menu-item-status' => 'publish'));
-    //ABOUT
-    $about_name = 'Meet Jill';
-    $about_page = get_page_by_title($about_name);
-    if(!isset($about_page->ID)){
-        wp_update_nav_menu_item($menu_id, 0, array(
-            'menu-item-title' => $about_name,
-            'menu-item-object-id' => $about_page->ID,
-            'menu-item-object' => 'page',
-            'menu-item-status' => 'publish',
-            'menu-item-type' => 'post_type',
-        ));
     }else{
-      write_log('no about');  
+        write_log($menu_name . ' exists'); 
+        $menu_header = get_term_by('name', $menu_name, 'nav_menu');
+        if ( is_wp_error( $menu_header ) ) {
+            // something went wrong
+            write_log( $menu_header->get_error_message());
+        }
+        $menu_id = $menu_header->term_id;
     }
-
-    //NEWS
-    $news_page = 'Latest News';
-    $blog_id = get_option( 'page_for_posts' );
-    if(!isset($blog_id->ID)){
-        wp_update_nav_menu_item($menu_id, 0, array(
-            'menu-item-title' => $news_page,
-            'menu-item-object-id' => $blog_id,
-            'menu-item-object' => 'page',
-            'menu-item-status' => 'publish',
-            'menu-item-type' => 'post_type',
-        ));
-    }else{
-      write_log('no news');  
-    }
-
-    //PRIORITIES
-    $priorities_name = 'Priorities';
-    $priorities_page = get_page_by_title($priorities_name);
-    if(!isset($priorities_page->ID)){
-        wp_update_nav_menu_item($menu_id, 0, array(
-            'menu-item-title' => $priorities_name,
-            'menu-item-object-id' => $priorities_page->ID,
-            'menu-item-object' => 'page',
-            'menu-item-status' => 'publish',
-            'menu-item-type' => 'post_type',
-        ));
-    }else{
-      write_log('no priorities');  
-    }
-
-    //EVENTS
-    $events_name = 'Events';
-    $events_page = get_page_by_title($events_name);
-    if(!isset($events_page->ID)){
-        wp_update_nav_menu_item($menu_id, 0, array(
-            'menu-item-title' => $events_name,
-            'menu-item-object-id' => $events_page->ID,
-            'menu-item-object' => 'page',
-            'menu-item-status' => 'publish',
-            'menu-item-type' => 'post_type',
-        ));
-    }else{
-      write_log('no events');  
-    }
-
-    //GET INVOLVED
-    $involved_name = 'Get Involved';
-    $involved_page = get_page_by_title($involved_name);
-    if(!isset($involved_page->ID)){
-        wp_update_nav_menu_item($menu_id, 0, array(
-            'menu-item-title' => $involved_name,
-            'menu-item-object' => 'page',
-            'menu-item-object-id' => $involved_page->ID,
-            'menu-item-classes'=> 'highlight2',
-            'menu-item-status' => 'publish',
-            'menu-item-type' => 'post_type',
-        ));
-    }else{
-      write_log('no get involved');  
-    }
-
-    //DONATE
-    wp_update_nav_menu_item($menu_id, 0, array(
-        'menu-item-title' =>  __('Donate'),
-        'menu-item-url' => '#', 
-        'menu-item-classes'=> 'highlight',
-        'menu-item-target' => '_new', 
-        'menu-item-status' => 'publish'));
-
-    $menu_header = get_term_by('name', 'TFC Top Menu', 'nav_menu');
-    $menu_header_id = $menu_header->term_id;
     $locations = get_theme_mod('nav_menu_locations');
-    $locations['primary'] = $menu_header_id;
+    $locations['primary'] = $menu_id;
     set_theme_mod( 'nav_menu_locations', $locations );
+    $locations = get_theme_mod('nav_menu_locations');
+    write_log($locations);  
+}
 
+function tfc_make_foot_menu() {
+// Check if the menu exists
+$menu_name = 'TFC Footer Menu';
+$menu_exists = wp_get_nav_menu_object( $menu_name );
 
+// If it doesn't exist, let's create it.
+if( !$menu_exists){
+    write_log($menu_name . ' menu does not exist');
+    $menu_id = wp_create_nav_menu($menu_name);
+        write_log($menu_id . ' is menu id (created)');
+    // Set up default menu items - HOME
+    wp_update_nav_menu_item($menu_id, 0, array(
+        'menu-item-title' =>  __('Home'),
+        'menu-item-classes' => 'home',
+        'menu-item-url' => home_url( '/' ), 
+        'menu-item-status' => 'publish'));
     }else{
-       write_log($menu_name . ' exists, skipping'); 
+        write_log($menu_name . ' exists'); 
+        $menu_header = get_term_by('name', $menu_name, 'nav_menu');
+        if ( is_wp_error( $menu_header ) ) {
+            // something went wrong
+            write_log( $menu_header->get_error_message());
+        }
+        $menu_id = $menu_header->term_id;
     }
-
+    $locations = get_theme_mod('nav_menu_locations');
+    $locations['foot-menu'] = $menu_id;
+    set_theme_mod( 'nav_menu_locations', $locations );
+    $locations = get_theme_mod('nav_menu_locations');
+    write_log($locations);  
 }
 
 function tfc_make_homepage(){
@@ -264,7 +169,6 @@ function tfc_make_homepage(){
                 'post_content'  => $new_page_content,
                 'post_status'   => 'publish',
                 'post_author'   => 1,
-                'post_slug'     => 'get-involved'
         );
         // If the page doesn't already exist, create it
         if (!isset($page_check->ID)){//we don't have a Sample Page
@@ -288,20 +192,133 @@ function tfc_make_homepage(){
 }
 
 function tfc_fix_blog(){
-$blog_id = get_option( 'page_for_posts' );
-write_log($blog_id . ' blog page');
 
-$blog_page = array(
-        'ID' => $blog_id,
-        'post_title' => 'Latest News',
-        'post_slug' => 'news'
-    );
-$blog_page_update = wp_update_post( $blog_page );
-write_log($blog_page_update . ' blog page');
+    $new_page_title     = __('Latest News',''); // Page's title
+    $page_check = get_page_by_title($new_page_title);// Check if the page already exists
+
+    $blog_id = get_option( 'page_for_posts' );  //See if there's a blog page to remove 
+    wp_delete_post($blog_id);
+
+    if (!isset($page_check->ID)){//we don't have this page already
+        tfc_make_new_page("news","Latest News","Page that shows posts","flag.jpg","TRUE","TRUE","");
+
+    }
+    $news = get_page_by_title($new_page_title);// get the page id
+    //set the page as page for posts and make menu items
+    if ( $news ){
+        update_option( 'page_for_posts', $news->ID );
+    } 
+
 }
 
+function tfc_make_menu_item($post_id, $title){
+    // Check if the menu exists
+    $menu_name = 'TFC Top Menu';
+    $menu_exists = wp_get_nav_menu_object( $menu_name );
+    $menu_header = get_term_by('name', $menu_name, 'nav_menu');
+    if ( is_wp_error( $menu_header ) ) {
+        // something went wrong
+        write_log( $menu_header->get_error_message());
+    }
+    $menu_id = $menu_header->term_id;
+    $css = '';
+    if ($title == 'Get Involved'){
+        $css="highlight2";
+    }
+    write_log($menu_id . ' menu id ' . $post_id);
+    if( tfc_item_is_in_menu( $menu_id,$post_id ) ) {
+        write_log( $menu_name . ' already has ' . $title);
+        return;
+    }
+    if($menu_exists){
+        write_log($menu_name . ' adding ' . $title);
+        $page_name = $title;
+        wp_update_nav_menu_item($menu_id, 0, array(
+            'menu-item-title' => $title,
+            'menu-item-object-id' => $post_id,
+            'menu-item-object' => 'page',
+            'menu-item-status' => 'publish',
+            'menu-item-type' => 'post_type',
+            'menu-item-classes' => $css,
+        ));
+    }
+}
+
+function tfc_make_foot_menu_item($post_id, $title){
+    // Check if the menu exists
+    $menu_name = 'TFC Footer Menu';
+    $menu_exists = wp_get_nav_menu_object( $menu_name );
+    $menu_header = get_term_by('name', $menu_name, 'nav_menu');
+    if ( is_wp_error( $menu_header ) ) {
+        // something went wrong
+        write_log( $menu_header->get_error_message());
+    }
+    $menu_id = $menu_header->term_id;
+    write_log($menu_id . ' menu id ' . $post_id);
+    if( tfc_item_is_in_menu( $menu_id,$post_id ) ) {
+        write_log( $menu_name . ' already has ' . $title);
+        return;
+    }
+    if($menu_exists){
+        write_log($menu_name . ' adding ' . $title);
+        $page_name = $title;
+        wp_update_nav_menu_item($menu_id, 0, array(
+            'menu-item-title' => $title,
+            'menu-item-object-id' => $post_id,
+            'menu-item-object' => 'page',
+            'menu-item-status' => 'publish',
+            'menu-item-type' => 'post_type',
+        ));
+    }
+}
+
+function tfc_make_donate_button(){
+    $menus = ['TFC Top Menu','TFC Footer Menu'];
+    foreach ($menus as &$value) {
+        $menu_name = $value;
+        // Check if the menu exists
+        $menu_exists = wp_get_nav_menu_object( $menu_name );
+        $menu_header = get_term_by('name', $menu_name, 'nav_menu');
+        if ( is_wp_error( $menu_header ) ) {
+            // something went wrong
+            write_log( $menu_header->get_error_message());
+        }
+        $menu_id = $menu_header->term_id;
+        if($menu_exists){
+            write_log($menu_name . ' adding donate button');
+            wp_update_nav_menu_item($menu_id, 0, array(
+                'menu-item-title' =>  __('Donate'),
+                'menu-item-url' => '#', 
+                'menu-item-classes'=> 'highlight',
+                'menu-item-target' => '_new', 
+                'menu-item-status' => 'publish'));
 
 
+        }
+    }
+}
+function tfc_item_is_in_menu( $menu = null, $object_id = null ) {
+
+    // get menu object
+    $menu_object = wp_get_nav_menu_items( esc_attr( $menu ) );
+
+    // stop if there isn't a menu
+    if( ! $menu_object )
+        return false;
+
+    // get the object_id field out of the menu object
+    $menu_items = wp_list_pluck( $menu_object, 'object_id' );
+
+    // use the current post if object_id is not specified
+    if( !$object_id ) {
+        global $post;
+        $object_id = get_queried_object_id();
+    }
+
+    // test if the specified page is in the menu or not. return true or false.
+    return in_array( (int) $object_id, $menu_items );
+
+}
 
 function tfc_add_image($post, $image){
     write_log('start image ' . $image . ' page is ' .  $post); 
@@ -320,7 +337,7 @@ function tfc_add_image($post, $image){
         );
         $attachment_id = wp_insert_attachment( $attachment, $upload_file['file'], $post );
         set_post_thumbnail($post, $attachment_id);  
-        write_log('Done' . $image . ' page is ' .  $post);     
+        write_log('Done ' . $image . ' page is ' .  $post);     
         if (!is_wp_error($attachment_id)) {
             require_once(ABSPATH . "wp-admin" . '/includes/image.php');
             $attachment_data = wp_generate_attachment_metadata( $attachment_id, $upload_file['file'] );
@@ -332,5 +349,28 @@ function tfc_add_image($post, $image){
         write_log('ERROR' . $post . ' page is ' .  $upload_file['error']);
     }
 }
+
+function set_widgets(){
+
+$active_sidebars = get_option( 'sidebars_widgets' ); //get all sidebars and widgets
+write_log(print_r($active_sidebars,true));
+$widget_options = get_option( 'recent-posts-1' );
+$widget_options[1] = array( 'title' => '' );
+
+if(isset($active_sidebars['footer-one-widgets']) && empty($active_sidebars['footer-one-widgets'])) { //check if sidebar exists and it is empty
+
+    $active_sidebars['footer-one-widgets'] = array('recent-posts-1'); //add a widget to sidebar
+    update_option('recent-posts-1', $widget_options); //update widget default options
+    update_option('sidebars_widgets', $active_sidebars); //update sidebars
+}
+write_log(print_r($active_sidebars,true));
+    
+}
+function custom_menu_order() {
+    return array( 'index.php', 'edit.php', 'edit-comments.php' );
+}
+
+add_filter( 'custom_menu_order', '__return_true' );
+add_filter( 'menu_order', 'custom_menu_order' );
 
 ?>

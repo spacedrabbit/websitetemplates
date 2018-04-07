@@ -142,31 +142,6 @@ function tfc_change_defaults( $wp_customize ) {
     );
 
 
-
-$wp_customize->add_setting( 'hestia_nr_footer_widgets', array(
-  'sanitize_callback' => 'tfc_sanitize_select',
-  'default' => '3',
-) );
-
-$wp_customize->add_control( 'hestia_nr_footer_widgets', array(
-  'type' => 'select',
-  'section' => 'hestia_general',
-  'label' => __( 'Footer Columns' ),
-  'description' => __( 'How many widget slots in the footer' ),
-  'choices' => array(
-    '1' => __( '1' ),
-    '2' => __( '2' ),
-    '3' => __( '3' ),
-    '4' => __( '4' ),
-  ),
-) );
-$wp_customize->selective_refresh->add_partial(
-        'hestia_nr_footer_widgets', array(
-            'selector'        => '.footer',
-            'settings'        => array( 'hestia_nr_footer_widgets'),
-        )
-    );
-
 }
 
 add_action( 'customize_register', 'tfc_change_defaults', 99 );
