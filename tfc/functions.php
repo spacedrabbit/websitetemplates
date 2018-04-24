@@ -6,6 +6,7 @@ include_once( 'inc/feature-cta-section.php' );
 include_once( 'inc/features.php' );
 include_once( 'inc/footer.php' );
 include_once( 'inc/starter.php' );
+include_once( 'inc/paidfor.php' );
 
 function tfc_widget_init(){
 
@@ -35,8 +36,11 @@ function register_my_menus() {
       'foot-menu' => __( 'Footer Block Menu' ),
     )
   );
+  unregister_nav_menu( 'footer' );
 }
 add_action( 'init', 'register_my_menus' );
+
+
 
 function mychildtheme_enqueue_styles() {
     $parent_style = 'parent-style';
@@ -56,7 +60,7 @@ add_action( 'hestia_before_features_section_hook', 'tfc_cta' );
 
 add_action( 'hestia_before_footer_hook', 'tfc_footer_top' );
 
-add_action( 'hestia_after_footer_hook', 'tfc_footer_bar' );
+add_action( 'hestia_after_footer_widgets_hook', 'tfc_footer_bar' );
 
 if (function_exists('register_sidebar')) {
 register_sidebar(array(

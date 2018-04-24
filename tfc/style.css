@@ -6,6 +6,18 @@ Template: hestia
 Version: 1.1
 */
 
+.paid-for {
+padding: 10px; 
+border: 1px solid; 
+text-align:center;
+margin:1em 0;
+}
+
+.paid-for p{
+padding: 0; 
+margin:0;
+}
+
 .navbar,
 .navbar.navbar-transparent {
 border-top:none;
