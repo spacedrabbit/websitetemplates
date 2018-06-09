@@ -5,7 +5,7 @@
 
 customize('hestia_about_hide', function(value) {
       value.bind(function(newval) {
-        console.log('hestia_about_hide',newval)
+        //console.log('hestia_about_hide',newval)
       })
   });
 
@@ -26,11 +26,11 @@ customize('hestia_about_hide', function(value) {
           themeBodyFont = 'Source Serif Pro';
           themeColor = '#183E58';
         }
-        console.log('themeColor', themeColor + '  ' + themeFont);
+        //console.log('themeColor', themeColor + '  ' + themeFont);
         customize.value('accent_color')(themeColor);
         customize.value('hestia_headings_font')(themeFont);
         customize.value('hestia_body_font')(themeBodyFont);
-        console.log('customize', newval);
+        //console.log('customize', newval);
         
         $('body').removeClass("modmult modblue podium");
         $('body').addClass(newval);

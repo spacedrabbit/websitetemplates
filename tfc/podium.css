@@ -71,6 +71,16 @@ border:1px solid;
 padding:5px 6px;
 }
 
+
+.podium .navbar-default .navbar-brand,
+.navbar-default .navbar-nav> li.highlight >a,
+.navbar .menu-item.highlight2 a,
+.navbar .menu-item.highlight2.active a
+body:not(.home) .navbar-default .navbar-nav > .highlight2.active:not(.btn) > a,
+.hestia-info p,
+.info p {
+color:#fff;
+}
 .podium .navbar-default .navbar-brand,
 .podium .navbar .menu-item.highlight2 a,
 .podium .navbar .menu-item.highlight2.active a,

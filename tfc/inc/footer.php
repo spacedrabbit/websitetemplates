@@ -8,9 +8,7 @@
       'footer-two-widgets',
       'footer-three-widgets',
     );
-    $hestia_footer_class       = 'col-md-3';
-    $footer_has_widgets        = false;
-    $hestia_nr_footer_widgets  = get_theme_mod( 'hestia_nr_footer_widgets', '3' );
+    $hestia_footer_class       = 'col-md-4';
 
     /**
      *  Enabling alternative footer style
@@ -27,23 +25,7 @@
         $footer_class = 'footer-black';
     }
 
-    /**
-     *  Get the widgets areas ids and class corresponding to the number selected by the user
-     */
-    if ( ! empty( $hestia_nr_footer_widgets ) ) {
-      $hestia_footer_widgets_ids = array_slice( $hestia_footer_widgets_ids, 0, $hestia_nr_footer_widgets );
-      switch ( $hestia_nr_footer_widgets ) {
-        case 1:
-          $hestia_footer_class = 'col-md-6';
-          break;
-        case 2:
-          $hestia_footer_class = 'col-md-4';
-          break;
-        case 3:
-          $hestia_footer_class = 'col-md-3';
-          break;
-      }
-    }
+
     /**
      * Check if the selected footer widgets areas are not empty
      */
@@ -67,11 +49,6 @@
           <div class="content">
             <div class="row">
 
- <?php
- echo '<div class="' . $hestia_footer_class . '">';
-wp_nav_menu( array( 'theme_location' => 'foot-menu', 'container_class' => 'footer-menu-block' ) ); 
-echo '</div>';
-?>
 
 
               <?php
@@ -108,7 +85,7 @@ echo '</div>';
   function hesta_bottom_footer_content( $is_callback = false ) {
     if ( ! $is_callback ) {
       ?>
-        <p class="copyright center">Powered by <a href="http://www.techforcampaigns.org" target="_blank" rel="nofollow">Tech for Campaigns</a></p>
+        <p class="copyright center">Powered by <a href="http://www.techforcampaigns.org" target="_blank">Tech for Campaigns</a></p>
       <?php
     }
   }

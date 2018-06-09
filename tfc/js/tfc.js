@@ -26,7 +26,5 @@ jQuery(document).ready(function( $ ) {
     nvtag_callbacks.postRender = nvtag_callbacks.postRender || [];
     nvtag_callbacks.postRender.push(checkHeight('.tfc-cta div.col-equal'));
 
-
-
     
 });

@@ -52,8 +52,23 @@ function tfc_features_content( $hestia_features_content, $is_callback = false ) 
     if ( ! empty( $hestia_features_content ) ) :
 
         $hestia_features_content = json_decode( $hestia_features_content );
-        if ( ! empty( $hestia_features_content ) ) {
             echo '<div class="row" ' . ( function_exists( 'hestia_add_animationation') ? hestia_add_animationation( 'fade-up' ) : '' ) . '>';
+            $feature_count = count($hestia_features_content);
+            $tfc_features_col_class = "col-md-4";
+            switch ($feature_count) {
+                case 1:
+                    $tfc_features_col_class = "col-md-12";
+                    break;
+                case 2:
+                    $tfc_features_col_class = "col-md-6";
+                    break;
+                case 3:
+                    $tfc_features_col_class = "col-md-4";
+                    break;
+                case 4:
+                    $tfc_features_col_class = "col-md-3";
+                    break;
+            }
             foreach ( $hestia_features_content as $features_item ) :
                 $icon = ! empty( $features_item->icon_value ) ? apply_filters( 'hestia_translate_single_string', $features_item->icon_value, 'Features section' ) : '';
                 $image = ! empty( $features_item->image_url ) ? apply_filters( 'hestia_translate_single_string', $features_item->image_url, 'Features section' ) : '';
@@ -62,7 +77,7 @@ function tfc_features_content( $hestia_features_content, $is_callback = false ) 
                 $link = ! empty( $features_item->link ) ? apply_filters( 'hestia_translate_single_string', $features_item->link, 'Features section' ) : '';
                 $button = ! empty( $features_item->text2 ) ? apply_filters( 'hestia_translate_single_string', $features_item->text2, 'Features section' ) : 'Read More';
                 ?>
-                <div class="col-xs-12 <?php echo apply_filters( 'hestia_features_per_row_class','col-md-4' ); ?> feature-box">
+                <div class="col-xs-12 <?php echo $tfc_features_col_class; ?> feature-box">
                     <div class="hestia-info">
                         <?php
                         if ( ! empty( $link ) ) {
@@ -93,7 +108,6 @@ function tfc_features_content( $hestia_features_content, $is_callback = false ) 
                 <?php
             endforeach;
             echo '</div>';
-        }// End if().
         endif;
     if ( ! $is_callback ) {
     ?>

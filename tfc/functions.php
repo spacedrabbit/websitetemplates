@@ -150,7 +150,7 @@ add_action('hestia_before_header_hook', 'tfc_gtm_body');
 function tfc_body_classes( $classes ) {
   $tfc_color_setting  = get_theme_mod( 'tfc_color','podium');
   $classes[] = $tfc_color_setting;
-  write_log('classes ' . print_r($classes,true) . ' theme is ' .  $tfc_color_setting); 
+  //write_log('classes ' . print_r($classes,true) . ' theme is ' .  $tfc_color_setting); 
   return $classes;
 }
 

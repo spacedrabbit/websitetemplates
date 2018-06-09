@@ -10,16 +10,6 @@ function tfc_change_defaults( $wp_customize ) {
 
     $selective_refresh = isset( $wp_customize->selective_refresh ) ? true : false;
 
-    /* Change default fonts */
-    $tfc_headings_font = $wp_customize->get_setting( 'hestia_headings_font' );
-    if ( ! empty( $tfc_headings_font ) ) {
-        $tfc_headings_font->default = tfc_font_default_frontend();
-    }
-    $tfc_body_font = $wp_customize->get_setting( 'hestia_body_font' );
-    if ( ! empty( $tfc_body_font ) ) {
-        $tfc_headings_font->default = tfc_font_default_body_frontend();
-    }
-
     $tfc_no_box = $wp_customize->get_setting( 'hestia_general_layout' );
     if ( ! empty( $tfc_no_box ) ) {
         $tfc_no_box->default = 0;
@@ -71,7 +61,7 @@ function tfc_change_defaults( $wp_customize ) {
         'tfc_big_title_second_button_text', array(
             'label'    => esc_html__( 'Non-primary Button text', 'tfc' ),
             'section'  => 'hestia_big_title',
-            'priority' => 30,
+            'priority' => 150,
         )
     );
 
@@ -89,7 +79,7 @@ function tfc_change_defaults( $wp_customize ) {
         'tfc_big_title_second_button_link', array(
             'label'    => esc_html__( 'Non-primary Button URL', 'tfc' ),
             'section'  => 'hestia_big_title',
-            'priority' => 30,
+            'priority' => 215,
         )
     );
 
@@ -131,6 +121,13 @@ function tfc_change_defaults( $wp_customize ) {
             'customizer_repeater_link_control'  => true,
             'customizer_repeater_text2_control' => true,
     )));
+    $wp_customize->selective_refresh->add_partial(
+        'hestia_features_content', array(
+            'selector' => '.hestia-features-content',
+            'settings' => 'hestia_features_content',
+        )
+    );
+
     $wp_customize->remove_control('background_color');
     $wp_customize->remove_control('accent_color');
     $wp_customize->selective_refresh->add_partial(
@@ -144,7 +141,8 @@ function tfc_change_defaults( $wp_customize ) {
 
 }
 
-add_action( 'customize_register', 'tfc_change_defaults', 99 );
+add_action( 'customize_register', 'tfc_change_defaults', 999 );
+
 
 /**
  * Add a second button in Big Title section
