@@ -35,7 +35,23 @@ customize('hestia_about_hide', function(value) {
         $('body').removeClass("modmult modblue podium");
         $('body').addClass(newval);
 
+        checkHeight('.tfc-cta div.col-equal');
+        checkHeight('.hestia-features-content .row .feature-box');
 
+    });
+
+    // TFC white header variant
+    customize('tfc_head_color', function(value) {
+      value.bind(function(newval) {
+        console.log('newval',newval);
+        var backgroundWhite = 'white-menu';
+        if (newval == false) {
+          $('body').removeClass(backgroundWhite);
+        }else{
+          $('body').addClass(backgroundWhite);
+        }
+      });
+    });
     function checkHeight(selector){
             var window = $(document).width();
             if (window > 768) {
@@ -50,11 +66,10 @@ customize('hestia_about_hide', function(value) {
             }
         };  
     
-      checkHeight('.tfc-cta div.col-equal');
-      checkHeight('.hestia-features-content .row .feature-box');
+      
 
 
       });
-    });
+
   });
 })(jQuery);

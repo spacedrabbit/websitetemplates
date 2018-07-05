@@ -131,7 +131,7 @@ body.modmult:not(.home) .navbar-default .navbar-nav > .highlight:not(.btn) > a:h
 .modmult .navbar .menu-item.highlight a:hover,
 .modmult .navbar-default .navbar-nav> .highlight.active>a:hover,
 body.modmult:not(.home) .navbar-default .navbar-nav > .highlight.active:not(.btn) > a:hover {
-color:#666;
+color:#999;
 }
 
 .modmult .navbar .menu-item.highlight a,

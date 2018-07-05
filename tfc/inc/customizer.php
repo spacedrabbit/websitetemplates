@@ -105,6 +105,22 @@ function tfc_change_defaults( $wp_customize ) {
         'render_callback' => 'tfc_color_callback'
     ) );
 
+
+    $wp_customize->add_setting( 'tfc_head_color', array(
+
+      'capability' => 'edit_theme_options',
+      'default' => 'false',
+      'sanitize_callback' => 'tfc_sanitize_checkbox',
+    ) );
+
+
+    $wp_customize->add_control( 'tfc_head_color', array(
+      'type' => 'checkbox',
+      'section' => 'colors', 
+      'label' => __( 'White Background for Header' ),
+      'description' => __( 'Better for some logos' )
+    ) );
+
     $wp_customize->remove_control('hestia_features_title');
     $wp_customize->remove_control('hestia_features_subtitle');
 
@@ -242,6 +258,11 @@ function tfc_accent_color($tfc_color_setting) {
     }
 }
 add_filter( 'hestia_accent_color_default', 'tfc_accent_color' );
+
+function tfc_sanitize_checkbox( $checked ) {
+  // Boolean check.
+  return ( ( isset( $checked ) && true == $checked ) ? true : false );
+}
 
 function tfc_sanitize_radio( $input, $setting ) {
 

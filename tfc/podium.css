@@ -54,7 +54,7 @@ body.podium:not(.home) .navbar-default .navbar-nav > .highlight:not(.btn) > a:ho
 .podium .navbar .menu-item.highlight a:hover,
 .podium .navbar-default .navbar-nav> .highlight.active>a:hover,
 body.podium:not(.home) .navbar-default .navbar-nav > .highlight.active:not(.btn) > a:hover {
-color:#666;
+color:#999;
 }
 
 

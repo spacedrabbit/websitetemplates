@@ -63,7 +63,7 @@ body.modblue:not(.home) .navbar-default .navbar-nav > .highlight:not(.btn) > a:h
 .modblue .navbar .menu-item.highlight a:hover,
 .modblue .navbar-default .navbar-nav> .highlight.active>a:hover,
 body.modblue:not(.home) .navbar-default .navbar-nav > .highlight.active:not(.btn) > a:hover {
-color:#666;
+color:#999;
 }
 
 

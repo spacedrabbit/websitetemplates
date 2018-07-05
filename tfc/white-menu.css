@@ -1,0 +1,61 @@
+.white-menu .navbar,
+.white-menu .navbar.navbar-transparent {
+  background-color: #fff;
+  border-top: none;
+  border-bottom: none;
+}
+.white-menu .navbar-default .navbar-brand {
+  color: #0E405F;
+}
+.white-menu .navbar .navbar-nav>li>a,
+.white-menu .navbar.navbar-transparent li a {
+  color: #0E405F;
+}
+.white-menu.navbar-default .navbar-nav>.active>a,
+.white-menu .navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus,
+.white-menu .navbar .menu-item.active a,
+.white-menu .navbar .menu-item a:hover {
+  color: #0E405F;
+  opacity: .8;
+}
+.white-menu .navbar .menu-item.highlight2 {
+  background-color: #0E405F;
+  color: #fff;
+}
+
+.white-menu .navbar .menu-item.highlight a,
+.white-menu .navbar .menu-item.highlight a:hover,
+.white-menu .navbar .menu-item.highlight.active a,
+body.white-menu:not(.home) .navbar-default .navbar-nav>.highlight.active:not(.btn)>a:hover,
+body.white-menu:not(.home) .navbar-default .navbar-nav>.highlight.active:not(.btn)>a,
+.white-menu .navbar .menu-item.highlight2 a .white-menu .navbar .menu-item.highlight2.active a,
+body.white-menu:not(.home) .navbar-default .navbar-nav>.highlight2.active:not(.btn)>a,
+body.white-menu:not(.home) .navbar-default .navbar-nav>.highlight2.active:not(.btn)>a:hover,
+.white-menu .navbar .navbar-nav>li.highlight2>a,
+.white-menu .navbar.navbar-transparent li.highlight2 a,
+.white-menu .navbar .menu-item.highlight a,
+.white-menu .navbar .menu-item.highlight a:hover>a,
+.white-menu .navbar .menu-item.highlight2 a,
+.white-menu .navbar .menu-item.highlight2 a:hover>a {
+  color: #fff;
+}
+
+.white-menu .navbar .navbar-nav .menu-item.highlight a:hover,
+.white-menu .navbar .menu-item.highlight2 a:hover {
+    color: #ededed;
+    opacity:1;
+}
+.white-menu .navbar .menu-item.highlight {
+  background-color: #A62A22;
+}
+.white-menu.podium .navbar-default .navbar-brand,
+.white-menu.podium .navbar .navbar-nav>li.highlight2>a,
+.white-menu.podium .navbar .menu-item.highlight2 a:hover,
+.white-menu.podium .navbar .menu-item.highlight2 a .white-menu .navbar .menu-item.highlight2.active a,
+body.podium.white-menu:not(.home) .navbar-default .navbar-nav>.highlight2.active:not(.btn)>a:hover,
+.podium.white-menu .navbar .menu-item.highlight2 a,
+.podium.white-menu .navbar .menu-item.highlight2.active a,
+body.white-menu.podium:not(.home) .navbar-default .navbar-nav>.highlight2.active:not(.btn)>a {
+  color: #0E405F;
+}

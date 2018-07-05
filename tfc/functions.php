@@ -53,6 +53,7 @@ function mychildtheme_enqueue_styles() {
     wp_enqueue_style( 'custom-theme-modmult',get_stylesheet_directory_uri() . '/modmult.css');
     wp_enqueue_style( 'custom-theme-blue',get_stylesheet_directory_uri() . '/modblue.css');   
     wp_enqueue_style( 'custom-theme-podium',get_stylesheet_directory_uri() . '/podium.css'); 
+    wp_enqueue_style( 'custom-theme-white',get_stylesheet_directory_uri() . '/white-menu.css'); 
 }
 add_action( 'wp_enqueue_scripts', 'mychildtheme_enqueue_styles' );
 
@@ -148,9 +149,15 @@ add_action('hestia_before_header_hook', 'tfc_gtm_body');
 
 
 function tfc_body_classes( $classes ) {
+  $tfc_header_setting  = "";
+  $white_header= get_theme_mod( 'tfc_head_color','false');
+  if ( $white_header == true ) {
+    $tfc_header_setting  = 'white-menu';
+  }
   $tfc_color_setting  = get_theme_mod( 'tfc_color','podium');
   $classes[] = $tfc_color_setting;
-  //write_log('classes ' . print_r($classes,true) . ' theme is ' .  $tfc_color_setting); 
+  $classes[] = $tfc_header_setting;
+  write_log('classes ' . print_r($classes,true) . ' theme is ' .  $white_header); 
   return $classes;
 }
 
