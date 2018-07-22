@@ -21,13 +21,13 @@ This will install the Hestia parent theme and the Tech for Campaigns child theme
 5. There is one other plugin that you will find and activate via the "Customize" tab under "Appearance" in the left nav, called Orbit Fox.
 
 Here's a short description of each suggested plugin:
-- **All-in-One WP Migration** is what you will use to export your entire site (files and db) from your staging environment and then import it in to the WP install on your client's hosting enviromment. Learn more at https://wordpress.org/plugins/all-in-one-wp-migration/
-- **Content Views** can be used to add a grid layout on a page. Learn more at https://wordpress.org/plugins/content-views-query-and-display-post-page/
-- **Feed Them Social** can be used to embed feeds from various social media services. We suggest using it to place a list of events from Facebook on the Events page. Learn more at https://wordpress.org/plugins/feed-them-social/
-- **Jetpack** supercharges WordPress and makes it easier to use and includes Google Analytics integration. Jetpack also has social media features you can use within your site. Learn more at https://jetpack.com/pro/
-- **Lightweight Social Icons** can be used in the site footer to encourage people to follow your candidate on social media. Learn more at https://wordpress.org/plugins/lightweight-social-icons/
-- **Pixel Caffeine** configures Facebook Pixel and ties in with your social media strategy. Learn more at https://wordpress.org/plugins/pixel-caffeine/
-- **Orbit Fox** comes with the Hestia theme and is recommended as it gives you additional content areas within the "Customize" section. Learn more at https://themeisle.com/plugins/orbit-fox-companion/
+- **All-in-One WP Migration** is what you will use to export your entire site (files and db) from your staging environment and then import it in to the WP install on your client's hosting enviromment. Learn more at https://wordpress.org/plugins/all-in-one-wp-migration/.
+- **Content Views** can be used to add a grid layout on a page. Learn more at https://wordpress.org/plugins/content-views-query-and-display-post-page/.
+- **Feed Them Social** can be used to embed feeds from various social media services. We suggest using it to place a list of events from Facebook on the Events page. Learn more at https://wordpress.org/plugins/feed-them-social/.
+- **Jetpack** supercharges WordPress and makes it easier to use and includes Google Analytics integration. Jetpack also has social media features you can use within your site. Learn more at https://jetpack.com/pro/.
+- **Lightweight Social Icons** can be used in the site footer to encourage people to follow your candidate on social media. Learn more at https://wordpress.org/plugins/lightweight-social-icons/.
+- **Pixel Caffeine** configures Facebook Pixel and ties in with your social media strategy. Learn more at https://wordpress.org/plugins/pixel-caffeine/.
+- **Orbit Fox** comes with the Hestia theme and is recommended as it gives you additional content areas within the "Customize" section. Learn more at https://themeisle.com/plugins/orbit-fox-companion/.
 
 None of these plugins are required, but all can be useful in getting the most out of your WordPress site.
 
@@ -140,10 +140,13 @@ This tab is where you will go to export your entire site (files and database) on
 This is where you will control various general settings for things like site name (`<title>`) and description (`<meta name="description" content="...">`), date/time formatting for blog posts, default user roles, commenting, default image sizes, URL structure, and much more. If you are unsure of anything within this section, best to leave it at the default setting.
 
 ### Feed Them
+The Feed Them tab is where you can create shortcodes to display content from various social media feeds. You will usually need account access for any content you want to display in order to set appropriate settings or generate API keys, so you will need to work with the client team on most of the features here.
 
 ### Insights
+Insights is a plugin that comes with the Hestia theme and allows you to add features to your blog posts. Learn more at https://wordpress.org/plugins/insights/.
 
 ### Pixel Caffeine
+Pixel Caffeine is for adding Facebook Pixel tracking to your site for advanced insights via Facebook Advertising. If you client is not doing any Facebook advertising, than this can be left alone.
 
 ## Site Maintenance
 TFC does not offer post-launch maintenance, except for instances where our team caused errors or bugs. Upon launch, the client team will receive documentation on maintaining their site themselves.
