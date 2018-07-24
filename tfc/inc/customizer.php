@@ -202,5 +202,4 @@ function tfc_header_background_default() {
 }
 add_filter( 'hestia_big_title_background_default', 'tfc_header_background_default' );
 
-
 ?>

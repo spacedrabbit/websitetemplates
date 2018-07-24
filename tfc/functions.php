@@ -52,10 +52,10 @@ function mychildtheme_enqueue_styles() {
         array( $parent_style )
     );
     wp_enqueue_style( 'custom-theme-modmult',get_stylesheet_directory_uri() . '/modmult.css');
-    wp_enqueue_style( 'custom-theme-blue',get_stylesheet_directory_uri() . '/modblue.css');   
-    wp_enqueue_style( 'custom-theme-podium',get_stylesheet_directory_uri() . '/podium.css'); 
-    wp_enqueue_style( 'custom-theme-white',get_stylesheet_directory_uri() . '/white-menu.css'); 
-}
+    wp_enqueue_style( 'custom-theme-blue',get_stylesheet_directory_uri() . '/modblue.css');
+    wp_enqueue_style( 'custom-theme-podium',get_stylesheet_directory_uri() . '/podium.css');
+    wp_enqueue_style( 'custom-theme-white',get_stylesheet_directory_uri() . '/white-menu.css');
+  }
 add_action( 'wp_enqueue_scripts', 'mychildtheme_enqueue_styles' );
 
 add_action( 'hestia_before_features_section_hook', 'tfc_cta' );
@@ -107,8 +107,7 @@ function tfc_footer_bar() {
         </div>
       </div>
     </div>
-  <?php endif; 
-}
+  <?php endi}
 
 function tfc_footer_top() {
   if ( is_active_sidebar( 'footer-top-widgets' ) ) : ?>
@@ -119,8 +118,7 @@ function tfc_footer_top() {
         </div>
       </div>
     </div>
-  <?php endif; 
-}
+  <?php endi}
 
 
 function tfc_gtm_head(){
@@ -158,8 +156,7 @@ function tfc_body_classes( $classes ) {
   $tfc_color_setting  = get_theme_mod( 'tfc_color','podium');
   $classes[] = $tfc_color_setting;
   $classes[] = $tfc_header_setting;
-  write_log('classes ' . print_r($classes,true) . ' theme is ' .  $white_header); 
-  return $classes;
+  //write_log('classes ' . print_r($classes,true) . ' theme is ' .  $white_header)  return $classes;
 }
 
 add_filter( 'body_class', 'tfc_body_classes' );
