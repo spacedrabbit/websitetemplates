@@ -107,7 +107,8 @@ function tfc_footer_bar() {
         </div>
       </div>
     </div>
-  <?php endi}
+  <?php endif;
+}
 
 function tfc_footer_top() {
   if ( is_active_sidebar( 'footer-top-widgets' ) ) : ?>
@@ -118,7 +119,8 @@ function tfc_footer_top() {
         </div>
       </div>
     </div>
-  <?php endi}
+  <?php endif;
+}
 
 
 function tfc_gtm_head(){
