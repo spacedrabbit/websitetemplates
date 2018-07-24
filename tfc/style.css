@@ -68,6 +68,13 @@ color:#fff;
 padding:0 15px;
 }
 
+section.tfc-cta .row .quick-donate{
+	background-color:transparent;
+}
+
+.quick-donate .buttons a.btn{
+	background-color:#A62A22;
+}
 .quick-donate .row div.amount {
 font-weight:700;
 font-size:24px;

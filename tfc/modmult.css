@@ -52,7 +52,7 @@ content: "\f178";
 margin-left:3px;
 font-family: FontAwesome;
 }
-.modmult .quick-donate .row div a:after:hover {
+.modmult .quick-donate .row div a:hover {
 text-decoration:none;
 }
 
