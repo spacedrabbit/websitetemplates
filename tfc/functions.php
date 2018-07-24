@@ -1,5 +1,6 @@
 <?php
 include_once( 'inc/actblue.php' );
+include_once( 'inc/buttons.php' );
 include_once( 'inc/customizer.php' );
 include_once( 'inc/tfc-cta-section.php' );
 include_once( 'inc/feature-cta-section.php' );
