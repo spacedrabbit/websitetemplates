@@ -41,8 +41,6 @@ function register_my_menus() {
 }
 add_action( 'init', 'register_my_menus' );
 
-
-
 function mychildtheme_enqueue_styles() {
     $parent_style = 'parent-style';
 
@@ -122,7 +120,6 @@ function tfc_footer_top() {
   <?php endif;
 }
 
-
 function tfc_gtm_head(){
   ?>
 <!-- Google Tag Manager -->
@@ -158,7 +155,9 @@ function tfc_body_classes( $classes ) {
   $tfc_color_setting  = get_theme_mod( 'tfc_color','podium');
   $classes[] = $tfc_color_setting;
   $classes[] = $tfc_header_setting;
-  //write_log('classes ' . print_r($classes,true) . ' theme is ' .  $white_header)  
+
+  //write_log('classes ' . print_r($classes,true) . ' theme is ' .  $white_header)
+
   return $classes;
 }
 
@@ -168,7 +167,7 @@ function tfc_customize_preview_js() {
     wp_enqueue_script( 'tfc_customizer_preview', get_stylesheet_directory_uri() . '/js/customizer-preview.js', array( 'customize-preview' ), null, true );
 }
 add_action( 'customize_preview_init', 'tfc_customize_preview_js' );
- 
+
 
 function tfc_customize_control_js() {
     wp_enqueue_script( 'tfc_customizer_control', get_stylesheet_directory_uri() . '/js/customizer-control.js', array( 'customize-controls', 'jquery' ), null, true );
@@ -224,6 +223,11 @@ if (file_exists(WP_PLUGIN_DIR . '/hello.php')){
       'name'    => 'Pixel Caffeine',
       'slug'    => 'pixel-caffeine',
       'version' => '2.0+',
+    ),
+    array(
+      'name'    => 'All-in-One WP Migration',
+      'slug'    => 'all-in-one-wp-migration',
+      'version' => '6.7+',
     ),
   );
 
