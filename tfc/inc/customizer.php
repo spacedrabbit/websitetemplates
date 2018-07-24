@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Change default fonts.
  *
@@ -44,44 +43,6 @@ function tfc_change_defaults( $wp_customize ) {
     if ( ! empty( $tfc_testimonials_bar ) ) {
         $tfc_testimonials_bar->default = true;
     }
-
-
-    /* Add the second button in the Big Title section */
-    /**
-     * Control for button text
-     */
-    $wp_customize->add_setting(
-        'tfc_big_title_second_button_text', array(
-            'default'           => esc_html__( 'Second Button text', 'tfc' ),
-            'sanitize_callback' => 'sanitize_text_field',
-            'transport'         => $selective_refresh ? 'postMessage' : 'refresh',
-        )
-    );
-    $wp_customize->add_control(
-        'tfc_big_title_second_button_text', array(
-            'label'    => esc_html__( 'Non-primary Button text', 'tfc' ),
-            'section'  => 'hestia_big_title',
-            'priority' => 150,
-        )
-    );
-
-    /**
-     * Control for button link
-     */
-    $wp_customize->add_setting(
-        'tfc_big_title_second_button_link', array(
-            'default'           => '#',
-            'sanitize_callback' => 'esc_url_raw',
-            'transport'         => $selective_refresh ? 'postMessage' : 'refresh',
-        )
-    );
-    $wp_customize->add_control(
-        'tfc_big_title_second_button_link', array(
-            'label'    => esc_html__( 'Non-primary Button URL', 'tfc' ),
-            'section'  => 'hestia_big_title',
-            'priority' => 215,
-        )
-    );
 
     $wp_customize->add_setting( 'tfc_color', array(
 
@@ -146,37 +107,10 @@ function tfc_change_defaults( $wp_customize ) {
 
     $wp_customize->remove_control('background_color');
     $wp_customize->remove_control('accent_color');
-    $wp_customize->selective_refresh->add_partial(
-        'tfc_big_title_second_button', array(
-            'selector'        => '.carousel .buttons',
-            'settings'        => array( 'hestia_big_title_button_text', 'hestia_big_title_button_link', 'tfc_big_title_second_button_text', 'tfc_big_title_second_button_link' ),
-            'render_callback' => 'tfc_big_title_buttons_callback',
-        )
-    );
-
 
 }
 
 add_action( 'customize_register', 'tfc_change_defaults', 999 );
-
-
-/**
- * Add a second button in Big Title section
- *
- * @since 1.0.0
- */
-function tfc_big_title_second_btn() {
-
-    $tfc_big_title_second_btn_text = get_theme_mod( 'tfc_big_title_second_button_text', __( 'Second button text', 'tfc' ) );
-    $tfc_big_title_second_btn_link = get_theme_mod( 'tfc_big_title_second_button_link', '#' );
-
-    if ( ! empty( $tfc_big_title_second_btn_text ) && ! empty( $tfc_big_title_second_btn_link ) ) {
-        ?>
-        <a href="<?php echo esc_url( $tfc_big_title_second_btn_link ); ?>" title="<?php echo esc_attr( $tfc_big_title_second_btn_text ); ?>" class="btn btn-right btn-trans btn-lg" <?php echo hestia_is_external_url( $tfc_big_title_second_btn_link ); ?>><?php echo esc_html( $tfc_big_title_second_btn_text ); ?></a>
-        <?php
-    }
-}
-add_action( 'hestia_big_title_section_buttons', 'tfc_big_title_second_btn' );
 
 
 /**
@@ -188,31 +122,6 @@ function tfc_color_callback() {
 
     $tfc_color_setting  = get_theme_mod( 'tfc_color','tfc' );
     tfc_accent_color($tfc_color_setting);
-}
-
-/**
- * Render callback for buttons in Big Title section
- *
- * @since 1.0.0
- */
-function tfc_big_title_buttons_callback() {
-
-    $tfc_big_title_first_btn_text  = get_theme_mod( 'hestia_big_title_button_text', __( 'First button text', 'tfc' ) );
-    $tfc_big_title_first_btn_link  = get_theme_mod( 'hestia_big_title_button_link', '#' );
-    $tfc_big_title_second_btn_text = get_theme_mod( 'tfc_big_title_second_button_text', __( 'Second button text', 'tfc' ) );
-    $tfc_big_title_second_btn_link = get_theme_mod( 'tfc_big_title_second_button_link', '#' );
-
-    if ( ! empty( $tfc_big_title_first_btn_text ) ) {
-        ?>
-        <a href="<?php echo esc_url( $tfc_big_title_first_btn_link ); ?>" title="<?php echo esc_attr( $tfc_big_title_first_btn_text ); ?>" class="btn btn-primary btn-lg" <?php echo hestia_is_external_url( $tfc_big_title_first_btn_link ); ?>><?php echo esc_html( $tfc_big_title_first_btn_text ); ?></a>
-        <?php
-    }
-
-    if ( ! empty( $tfc_big_title_second_btn_text ) ) {
-        ?>
-        <a href="<?php echo esc_url( $tfc_big_title_second_btn_link ); ?>" title="<?php echo esc_attr( $tfc_big_title_second_btn_text ); ?>" class="btn btn-trans btn-lg" <?php echo hestia_is_external_url( $tfc_big_title_second_btn_link ); ?>><?php echo esc_html( $tfc_big_title_second_btn_text ); ?></a>
-        <?php
-    }
 }
 
 function tfc_font_default_frontend() {
@@ -292,6 +201,5 @@ function tfc_header_background_default() {
     return get_stylesheet_directory_uri() . '/assets/img/header.jpg';
 }
 add_filter( 'hestia_big_title_background_default', 'tfc_header_background_default' );
-
 
 ?>

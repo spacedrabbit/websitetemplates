@@ -1,5 +1,6 @@
 <?php
 include_once( 'inc/actblue.php' );
+include_once( 'inc/buttons.php' );
 include_once( 'inc/customizer.php' );
 include_once( 'inc/tfc-cta-section.php' );
 include_once( 'inc/feature-cta-section.php' );
@@ -40,8 +41,6 @@ function register_my_menus() {
 }
 add_action( 'init', 'register_my_menus' );
 
-
-
 function mychildtheme_enqueue_styles() {
     $parent_style = 'parent-style';
 
@@ -54,7 +53,7 @@ function mychildtheme_enqueue_styles() {
     wp_enqueue_style( 'custom-theme-blue',get_stylesheet_directory_uri() . '/modblue.css');
     wp_enqueue_style( 'custom-theme-podium',get_stylesheet_directory_uri() . '/podium.css');
     wp_enqueue_style( 'custom-theme-white',get_stylesheet_directory_uri() . '/white-menu.css');
-}
+  }
 add_action( 'wp_enqueue_scripts', 'mychildtheme_enqueue_styles' );
 
 add_action( 'hestia_before_features_section_hook', 'tfc_cta' );
@@ -121,7 +120,6 @@ function tfc_footer_top() {
   <?php endif;
 }
 
-
 function tfc_gtm_head(){
   ?>
 <!-- Google Tag Manager -->
@@ -157,7 +155,7 @@ function tfc_body_classes( $classes ) {
   $tfc_color_setting  = get_theme_mod( 'tfc_color','podium');
   $classes[] = $tfc_color_setting;
   $classes[] = $tfc_header_setting;
-  write_log('classes ' . print_r($classes,true) . ' theme is ' .  $white_header);
+  //write_log('classes ' . print_r($classes,true) . ' theme is ' .  $white_header)
   return $classes;
 }
 
