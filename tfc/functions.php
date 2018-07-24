@@ -158,7 +158,8 @@ function tfc_body_classes( $classes ) {
   $tfc_color_setting  = get_theme_mod( 'tfc_color','podium');
   $classes[] = $tfc_color_setting;
   $classes[] = $tfc_header_setting;
-  //write_log('classes ' . print_r($classes,true) . ' theme is ' .  $white_header)  return $classes;
+  //write_log('classes ' . print_r($classes,true) . ' theme is ' .  $white_header)  
+  return $classes;
 }
 
 add_filter( 'body_class', 'tfc_body_classes' );
