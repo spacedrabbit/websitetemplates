@@ -149,7 +149,7 @@ Insights is a plugin that comes with the Hestia theme and allows you to add feat
 Pixel Caffeine is for adding Facebook Pixel tracking to your site for advanced insights via Facebook Advertising. If you client is not doing any Facebook advertising, than this can be left alone.
 
 ## Site Maintenance
-TFC does not offer post-launch maintenance, except for instances where our team caused errors or bugs. Upon launch, the client team will receive documentation on maintaining their site themselves.
+TFC does not offer post-launch maintenance, except for instances where our team caused errors or bugs. Upon launch, the client team will receive documentation on maintaining their site themselves. If a campaign needs significant additional work done later in the cycle and they are one of our priority states/races, then our campaign relations team will reach out to them about a scoping an upgrade as a unique project.
 
 ## Questions?
 If you have any questions about working with WordPress or within the TFC theme, feel free to post your questions within the #website-wp-users channel in the TFC Slack channel.
