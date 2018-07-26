@@ -61,7 +61,7 @@ You will find the "Customize" tab within "Appearance" in the left navigation.
 1. Under the Appearance category in the left navigation, click the "Customize" button. This is where you will spend the bulk of your time getting the look and feel set for your site.
 2. Click the "Site Identity" tab to upload a logo for the header. The "Site Title" field is used within the browser tab and search engine results. It is also used in the header if no logo is uploaded. The "Tagline" field is not used and can be left blank. The "Site Icon" field is used to upload a favicon for the browser tab.
 3. Click the "Appearance Settings" tab to set some layout options and the font for the site.
-4. The "Frontpage Sections" tab is where you will edit the content for your homepage. By default, the Big Title Section (hero), CTA Left Widgets, CTA Right Widgets, and Features sections are enabled. We recommend this as the minimum content for the homepage. If you'd like, you may enable the other sections (About, Team, Ribbon, Testimonials, Clients Bar, Subscribe, Blog, or Contact) for additional homepage content.
+4. The "Frontpage Sections" tab is where you will edit the content for your homepage. By default, the CTA Buttons, Big Title Section (hero), CTA Left Widgets, CTA Right Widgets, and Features sections are enabled. We recommend this as the minimum content for the homepage. If you'd like, you may enable the other sections (About, Team, Ribbon, Testimonials, Clients Bar, Subscribe, Blog, or Contact) for additional homepage content.
 5. The "Blog Settings" tab is where you can set a post category to be your "featured posts" on the "Latest News" page.
 6. Click "Header Options" to customize the sitewide header/navigation. Enable "Very Top Bar" if you have need for utility navigation. The "Navigation" tab gives you a few options for the layout of the header. The "Header Setings" tab allows you to adjust the layout of pages and posts.
 7. The "Colors" tab gives you a few options for base styling.
@@ -149,7 +149,7 @@ Insights is a plugin that comes with the Hestia theme and allows you to add feat
 Pixel Caffeine is for adding Facebook Pixel tracking to your site for advanced insights via Facebook Advertising. If you client is not doing any Facebook advertising, than this can be left alone.
 
 ## Site Maintenance
-TFC does not offer post-launch maintenance, except for instances where our team caused errors or bugs. Upon launch, the client team will receive documentation on maintaining their site themselves.
+TFC does not offer post-launch maintenance, except for instances where our team caused errors or bugs. Upon launch, the client team will receive documentation on maintaining their site themselves. If a campaign needs significant additional work done later in the cycle and they are one of our priority states/races, then our campaign relations team will reach out to them about a scoping an upgrade as a unique project.
 
 ## Questions?
 If you have any questions about working with WordPress or within the TFC theme, feel free to post your questions within the #website-wp-users channel in the TFC Slack channel.
