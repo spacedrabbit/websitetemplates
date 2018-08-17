@@ -3,7 +3,8 @@
 
 ## Installation
 1. Download this repo and create a `.zip` file of the `tfc` folder.
-2. Create a fresh [WordPress](https://wordpress.org/download/) install locally and/or on a server. When setting your username and password, it is advisable to use something other than "admin" for the username, and please be sure to create an appropriately secure password.
+2. TFC will provide you with a staging environment with a default install of WordPress.
+    - If you haven't already done so, [use this form to request your staging environment](https://docs.google.com/forms/d/1uESxYKE-uTRhB9SI5Eyb19NMivnV0gLHZb2fnRNuWDs/prefill).
 3. Log in to the admin area of the WP install, click on Appearance then click on Themes in the left nav.
 4. Click the "Add New" button, then click the "Upload Theme" button.
 5. Select the `.zip` file you created, then click the "Install Now" button.
