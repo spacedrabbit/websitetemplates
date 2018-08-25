@@ -160,17 +160,18 @@ Out of the box, PHP provides a basic `mail` function to send email from contact 
 
 If you find that you cannot send emails from contact forms, your environment may not have this configured yet. Contact form plugins, such as [Pirate Forms](https://themeisle.com/plugins/pirate-forms/), will let you send test emails and give you a little bit of debugging info associated with either successes or failures. 
 
-![Cannot Instantiate Mail Error](./readme_image/error_message_pirate_forms.png)
+![Cannot Instantiate Mail Error](readme_images/error_message_pirate_forms.png)
 
 The specific error you'll be seeing is [`Could not instatiate mail function`](https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting#could-not-instantiate-mail-function). In order to get this to work, you'll need to do the following:
 
 1. Get the username and `pem` file from TFC to access the staging site via SSH.
-2. Save the `pem` file somewhere accessible on your drive and connect to the staging site as described [in this Bitnami doc (Win/Mac)](https://docs.bitnami.com/aws/faq/starting-bitnami-aws/connect_ssh/)
+2. Save the `pem` file somewhere accessible on your drive ![Pick an accessible path](readme_images/pick_a_path.png) and connect to the staging site as described [in this Bitnami doc (Win/Mac)](https://docs.bitnami.com/aws/faq/starting-bitnami-aws/connect_ssh/)
+![SSH into staging](readme_images/ssh_in.png)
 3. Check to see if `sendmail` is installed by running `whereis sendmail`. If it currently isn't installed, you see an output line that looks like `sendmail: `. If it is installed, you should see the output look more like `sendmail: /usr/sbin/sendmail /usr/lib/sendmail /usr/share/sendmail /usr/share/man/man8/sendmail.8.gz`
 4. If `sendmail` isn't installed, run `sudo apt-get install sendmail`. After installation completes, re-run `whereis sendmail` to make sure that you get the correct output. 
 5. Now navigate to [`/opt/bitnami/php/etc`](https://docs.bitnami.com/aws/faq/starting-bitnami-aws/understand_directory_structure/). In that dir you should see the `php.ini` file that you'll have to edit. 
 6. Run `vim php.ini` and look for the following line: `;sendmail_path = "env -i /usr/sbin/sendmail -t -i"`. Uncomment this line by removing the `;`. Make sure that the path listed here (`/usr/sbin/sendmail`) matches one of the paths outputted from the earlier step where you checked for the `sendmail` location (`whereis sendmail`). If it doesn't, you're going to have to change this line to match (but its usually going to be `/usr/sbin/sendmail`). Save your changes and exit.
-7. Now, we need to [restart out services](https://docs.bitnami.com/general/apps/wordpress/#how-to-start-or-stop-the-services) for the change to take effect. Navigate back to `/opt/bitnami` and run `sudo ./ctlscript.sh restart`. Wait for the operation to finish, disconnect from the server and try sending mail again. All should be working now
+7. Now, we need to [restart out services](https://docs.bitnami.com/general/apps/wordpress/#how-to-start-or-stop-the-services) for the change to take effect. Navigate back to `/opt/bitnami` and run `sudo ./ctlscript.sh restart`. Wait for the operation to finish, disconnect from the server and try sending mail again. All should be working now ![Restart all services](readme_images/restart_services.png)
 
 Links: ["Could not instantiate mail function" - PHPMailer](https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting#could-not-instantiate-mail-function), [How to Connect to the Server through SSH? - Bitnami](https://docs.bitnami.com/aws/faq/starting-bitnami-aws/connect_ssh/)[How to Send Email Using Sendmail- Bitnami](https://docs.bitnami.com/aws/components/php/#how-to-send-email-using-sendmail), [Where is the PHP Configuration File? - Bitnami](https://docs.bitnami.com/aws/components/php/#where-is-the-php-configuration-file), [What is the Directory Structure? - Bitnami](https://docs.bitnami.com/aws/faq/starting-bitnami-aws/understand_directory_structure/), [How to Start or Stop the Services? - Bitnami](https://docs.bitnami.com/general/apps/wordpress/#how-to-start-or-stop-the-services)
 
